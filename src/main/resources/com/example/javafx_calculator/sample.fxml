@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="537.0" prefWidth="298.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx_calculator.Main">
+<AnchorPane prefHeight="537.0" prefWidth="298.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx_calculator.Controller">
    <children>
       <VBox alignment="CENTER" layoutX="70.0" layoutY="104.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #111111; -fx-background-radius: 30;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="BOTTOM_RIGHT" prefHeight="197.0" prefWidth="359.0" text="0" textFill="WHITE">
+            <Label fx:id="output" alignment="BOTTOM_RIGHT" prefHeight="197.0" prefWidth="359.0" text="0" textFill="WHITE">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
@@ -39,7 +39,7 @@
                   <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #ACACAC;" text="AC">
+                  <Button mnemonicParsing="false" onAction="#clearOutput" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #ACACAC;" text="AC">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
@@ -54,82 +54,82 @@
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="÷" textFill="WHITE" GridPane.columnIndex="3">
+                  <Button mnemonicParsing="false" onAction="#processOperator" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="÷" textFill="WHITE" GridPane.columnIndex="3">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="7" textFill="WHITE" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="7" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="4" textFill="WHITE" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="4" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="1" textFill="WHITE" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="1" textFill="WHITE" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="55.0" prefWidth="120.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="0" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="120.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="0" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="8" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="8" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="5" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="5" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="9" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="9" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="6" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="6" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="3" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="3" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="," textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <Button mnemonicParsing="false" onAction="#processNumPad" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #3E3E3E;" text="," textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="×" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#processOperator" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="×" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="-" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <Button mnemonicParsing="false" onAction="#processOperator" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="-" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="+" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#processOperator" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="+" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="=" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <Button mnemonicParsing="false" onAction="#processOperator" prefHeight="55.0" prefWidth="55.0" style="-fx-background-radius: 30; -fx-background-color: #F29611;" text="=" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial" size="27.0" />
                      </font>
